@@ -1,5 +1,5 @@
-from resources.despesa_resource import despesa_resource
-from resources.receita_resource import receita_resource
+from src.resources.despesas.despesa_resource import despesa_resource
+from src.resources.receita.receita_resource import receita_resource
 from resources.add_forma_pagamento_resource import add_forma_pagamento_resource
 from resources.forma_pagamento_resource import forma_pagamento_resource
 from resources.delete_by_name_forma_pagamento_resource import delete_by_name_forma_pagamento_resource
