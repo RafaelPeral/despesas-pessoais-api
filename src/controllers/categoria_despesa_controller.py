@@ -1,7 +1,7 @@
-from models.repository.categoria_receita_repository import categoriaReceitaRepository
-from models.entities.categoria_receita import CategoriaReceita
+from models.repository.categoria_despesa_repository import categoriaDespesaRepository
+from models.entities.categoria_despesa import CategoriaDespesa
 
-class CategoriaReceitaController:
+class CategoriaDespesaController:
     def get_all(self):
         def __format_response(data: list) -> list:
             return {
@@ -10,8 +10,8 @@ class CategoriaReceitaController:
             }
         
         try:
-            self.categoria_receita_repository = categoriaReceitaRepository()
-            data = self.categoria_receita_repository.get_all()
+            self.categoria_despesa_repository = categoriaDespesaRepository()
+            data = self.categoria_despesa_repository.get_all()
             response = __format_response(data=data)
             return {"success": 200, "data": response}
         except Exception as e:
@@ -25,47 +25,46 @@ class CategoriaReceitaController:
         
         def __validate_fields(categoria):
             if not 'name' in categoria or not categoria['name']:
-                print(categoria)
                 raise Exception('O campo name é obrigatório')
         
         def __create_categoria(categoria):
             name = categoria['name']
             
-            new_categoria = CategoriaReceita(
+            new_categoria = CategoriaDespesa(
                 name = name
             )
             
-            self.categoria_receita_repository.insert(new_categoria)
+            self.categoria_despesa_repository.insert(new_categoria)
 
         try:
-            self.categoria_receita_repository = categoriaReceitaRepository()
+            self.categoria_despesa_repository = categoriaDespesaRepository()
             __validate_fields(categoria)
             __create_categoria(categoria)
             response = __format_response(categoria)
             return {"success": 200, "data": response}
         except Exception as e:
             return {"success": 500, "error": str(e)}
-    
-    def delete_by_name(self, categoria: str):
-        def __format_response(categoria: str) -> dict:
+
+    def delete_by_name(self, categoria):
+        def __format_response(categoria):
             return {
                 "name": categoria['name']
             }
         
-        def __validate_fields(categoria: str) -> None:
+        def __validate_fields(categoria):
             if not 'name' in categoria or not categoria['name']:
                 raise Exception('O campo name é obrigatório')
         
-        def __delete_categoria(categoria: str) -> None:
+        def __delete_categoria(categoria):
             name = categoria['name']
 
-            self.categoria_receita_repository.delete_by_name(name)
+            self.categoria_despesa_repository.delete_by_name(name)
 
         try:
-            self.categoria_receita_repository = categoriaReceitaRepository()
+            self.categoria_despesa_repository = categoriaDespesaRepository()
             __validate_fields(categoria)
             __delete_categoria(categoria)
-            response = __format_response(categoria=categoria)
+            response = __format_response(categoria)
             return {"success": 200, "data": response}
         except Exception as e:  
             return {"success": 500, "error": str(e)}
