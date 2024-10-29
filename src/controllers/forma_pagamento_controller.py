@@ -1,5 +1,5 @@
 from models.repository.forma_pagamento_repository import FormaPagamentoRepository
-from models.entities.forma_pagamento import formaPagamento
+from models.entities.forma_pagamento import FormaPagamento
 
 class FormaPagamentoController:
     def get_all(self) -> dict:
@@ -30,7 +30,7 @@ class FormaPagamentoController:
         def __create_forma_pagamento(forma_pagamento: dict) -> None:
             name = forma_pagamento['name']
 
-            new_forma_pagamento = formaPagamento(
+            new_forma_pagamento = FormaPagamento(
                 name = name
             )
 
@@ -55,16 +55,16 @@ class FormaPagamentoController:
             if not 'name' in forma_pagamento or not forma_pagamento['name']:
                 raise Exception('O campo name é obrigatório')
         
+        def __delete_forma_pagamento(forma_pagamento: str) -> None:
+            name = forma_pagamento['name']
+
+            self.forma_pagamento_repository.delete_by_name(name)
+
         try:
             self.forma_pagamento_repository = FormaPagamentoRepository()
             __validate_fields(forma_pagamento)
-            self.forma_pagamento_repository.delete_by_name(forma_pagamento['name'])
+            __delete_forma_pagamento(forma_pagamento)
             response = __format_response(forma_pagamento=forma_pagamento)
             return {"success": 200, "data": response}
         except Exception as e:
             return {"success": 500, "error": str(e)}
-    
-        
-    
-
-        
