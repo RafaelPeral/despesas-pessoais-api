@@ -23,19 +23,39 @@ class FormaPagamentoController:
             return {
                 "name": forma_pagamento['name']
             }
+        
+        def __validate_fields(forma_pagamento: dict) -> None:
+            if not 'name' in forma_pagamento or not forma_pagamento['name']:
+                raise Exception('O campo name é obrigatório')
 
         try:
             self.forma_pagamento_repository = FormaPagamentoRepository()
-            self.__validate_fields(forma_pagamento)
+            __validate_fields(forma_pagamento)
             self.__create_forma_pagamento(forma_pagamento)
             response = __format_response(forma_pagamento=forma_pagamento)
             return {"success": 200, "data": response}
         except Exception as e:
             return {"success": 500, "error": str(e)}
+        
+    def delete_by_name(self, forma_pagamento: str) -> None:
+        def __format_response(forma_pagamento: str) -> dict:
+            return {
+                "name": forma_pagamento['name']
+            }
+
+        def __validate_fields(forma_pagamento: str) -> None:
+            if not 'name' in forma_pagamento or not forma_pagamento['name']:
+                raise Exception('O campo name é obrigatório')
+        
+        try:
+            self.forma_pagamento_repository = FormaPagamentoRepository()
+            __validate_fields(forma_pagamento)
+            self.forma_pagamento_repository.delete_by_name(forma_pagamento['name'])
+            response = __format_response(forma_pagamento=forma_pagamento)
+            return {"success": 200, "data": response}
+        except Exception as e:
+            return {"success": 500, "error": str(e)}
     
-    def __validate_fields(self, forma_pagamento: dict) -> None:
-        if not 'name' in forma_pagamento or not forma_pagamento['name']:
-            raise Exception('O campo name é obrigatório')
         
     def __create_forma_pagamento(self, forma_pagamento: dict) -> None:
         name = forma_pagamento['name']

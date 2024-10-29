@@ -17,3 +17,8 @@ class FormaPagamentoRepository:
         with DBConnectionHendler() as db:
             db.session.add(forma_pagamento)
             db.session.commit()
+    
+    def delete_by_name(self, name: str) -> None:
+        with DBConnectionHendler() as db:
+            db.session.query(FormasPagamento).filter(FormasPagamento.nome == name).delete()
+            db.session.commit()
