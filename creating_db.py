@@ -27,21 +27,21 @@ session.execute(text("DROP TABLE IF EXISTS receitas CASCADE"))
 session.execute(text('''
     CREATE TABLE IF NOT EXISTS formas_pagamento (
         id SERIAL PRIMARY KEY,
-        nome VARCHAR(100) UNIQUE NOT NULL
+        name VARCHAR(100) UNIQUE NOT NULL
     )
 '''))
 
 session.execute(text('''
     CREATE TABLE IF NOT EXISTS categorias_despesas (
         id SERIAL PRIMARY KEY,
-        nome VARCHAR(100) UNIQUE NOT NULL
+        name VARCHAR(100) UNIQUE NOT NULL
     )
 '''))
 
 session.execute(text('''
     CREATE TABLE IF NOT EXISTS categorias_receitas (
         id SERIAL PRIMARY KEY,
-        nome VARCHAR(100) UNIQUE NOT NULL
+        name VARCHAR(100) UNIQUE NOT NULL
     )
 '''))
 
@@ -49,12 +49,12 @@ session.execute(text('''
     CREATE TABLE IF NOT EXISTS despesas (
         id SERIAL PRIMARY KEY,
         categoria VARCHAR(100) NOT NULL,
-        nome VARCHAR(100) NOT NULL,
+        name VARCHAR(100) NOT NULL,
         data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         forma_pagamento VARCHAR(100) NOT NULL,
         valor FLOAT NOT NULL,
-        FOREIGN KEY (forma_pagamento) REFERENCES formas_pagamento (nome),
-        FOREIGN KEY (categoria) REFERENCES categorias_despesas (nome)
+        FOREIGN KEY (forma_pagamento) REFERENCES formas_pagamento (name),
+        FOREIGN KEY (categoria) REFERENCES categorias_despesas (name)
     )
 '''))
 
@@ -62,12 +62,12 @@ session.execute(text('''
     CREATE TABLE IF NOT EXISTS receitas (
         id SERIAL PRIMARY KEY,
         categoria VARCHAR(100) NOT NULL,
-        nome VARCHAR(100) NOT NULL,
+        name VARCHAR(100) NOT NULL,
         data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         forma_pagamento VARCHAR(100) NOT NULL,
         valor FLOAT NOT NULL,
-        FOREIGN KEY (forma_pagamento) REFERENCES formas_pagamento (nome),
-        FOREIGN KEY (categoria) REFERENCES categorias_receitas (nome)
+        FOREIGN KEY (forma_pagamento) REFERENCES formas_pagamento (name),
+        FOREIGN KEY (categoria) REFERENCES categorias_receitas (name)
     )
 '''))
 

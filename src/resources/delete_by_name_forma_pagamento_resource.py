@@ -1,7 +1,6 @@
 from flask import request
 from controllers.forma_pagamento_controller import FormaPagamentoController
 
-
 def delete_by_name_forma_pagamento_resource(app):
     @app.delete("/delete_by_name_forma_pagamento")
     def delete_by_name_forma_pagamento():

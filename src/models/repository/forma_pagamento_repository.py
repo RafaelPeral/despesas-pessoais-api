@@ -8,7 +8,7 @@ class FormaPagamentoRepository:
             return [
             {
                 'id': forma_pagamento.id,
-                'nome': forma_pagamento.nome,
+                'name': forma_pagamento.name,
             }
             for forma_pagamento in data
             ]
@@ -20,5 +20,5 @@ class FormaPagamentoRepository:
     
     def delete_by_name(self, name: str) -> None:
         with DBConnectionHendler() as db:
-            db.session.query(FormasPagamento).filter(FormasPagamento.nome == name).delete()
+            db.session.query(FormasPagamento).filter(FormasPagamento.name == name).delete()
             db.session.commit()
