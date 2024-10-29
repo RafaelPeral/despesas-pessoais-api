@@ -1,6 +1,6 @@
 #categoria_despesa
 from resources.categoria_despesa.categoria_despesa_resource import categoria_despesa_resource
-from resources.categoria_despesa.add_categoria_despesa_resourse import add_receita_resource
+from resources.categoria_despesa.add_categoria_despesa_resourse import add_categoria_despesa_resource
 from resources.categoria_despesa.delete_by_name_categoria_despesa_resource import delete_by_name_categoria_despesa_resource
 
 #categoria_receita
@@ -25,7 +25,7 @@ from resources.receita.delete_by_name_receita_resource import delete_by_name_rec
 
 def resources(app):
     #categoria_despesa
-    add_receita_resource(app)
+    add_categoria_despesa_resource(app)
     delete_by_name_categoria_despesa_resource(app)
     categoria_despesa_resource(app)
 
