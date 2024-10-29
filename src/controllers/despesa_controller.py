@@ -4,9 +4,15 @@ from models.entities.despesa import Despesa
 class DespesaController:
     def get_all(self):
         def __format_response(data):
+            def cont (data):
+                total = 0
+                for c in data:
+                    total += c['valor']
+                return total
+            
             return {
                 "cont" : len(data),
-                "total" : sum(data),
+                "total" : cont(data),
                 "data": data
             }
         
