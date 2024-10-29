@@ -23,13 +23,6 @@ session.execute(text("DROP TABLE IF EXISTS categoria_receita CASCADE"))
 session.execute(text("DROP TABLE IF EXISTS despesa CASCADE"))
 session.execute(text("DROP TABLE IF EXISTS receita CASCADE"))
 
-session.execute(text("DROP TABLE IF EXISTS formas_pagamento CASCADE"))
-session.execute(text("DROP TABLE IF EXISTS categorias_despesas CASCADE"))
-session.execute(text("DROP TABLE IF EXISTS categorias_receitas CASCADE"))
-session.execute(text("DROP TABLE IF EXISTS despesas CASCADE"))
-session.execute(text("DROP TABLE IF EXISTS receitas CASCADE"))
-
-
 session.execute(text('''
     CREATE TABLE IF NOT EXISTS forma_pagamento (
         id SERIAL PRIMARY KEY,
