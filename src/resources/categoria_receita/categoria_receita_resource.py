@@ -1,6 +1,6 @@
-from controllers.categoria_receita_controller import categoriaReceitaController
+from controllers.categoria_receita_controller import CategoriaReceitaController
 
 def categoria_receita_resource(app):
     @app.get("/categoria_receita")
     def categoria_receita():
-        return categoriaReceitaController().get_all()
+        return CategoriaReceitaController().get_all()
