@@ -3,8 +3,8 @@ from models.repository.receita_repository import ReceitaRepository
 class ReceitaController:
     def receita(self):
         try:
-            receitasrepository = ReceitaRepository()
-            data = receitasrepository.get_all()
+            receitarepository = ReceitaRepository()
+            data = receitarepository.get_all()
             response = self.__format_response(data)
             return {"success": 200, "data": response}
         except Exception as e:

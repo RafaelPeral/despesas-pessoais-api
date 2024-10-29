@@ -1,10 +1,10 @@
 #categoria_receita
-from resources.categoria_receita.categoria_receita_resource import categorias_receita_resource
+from resources.categoria_receita.categoria_receita_resource import categoria_receita_resource
 from resources.categoria_receita.add_categoria_receita_resource import add_categoria_receita_resource
 from resources.categoria_receita.delete_by_name_categoria_receita_resource import delete_by_name_categoria_receita_resource
 
 #despesa
-from resources.despesas.despesa_resource import despesa_resource
+from resources.despesa.despesa_resource import despesa_resource
 
 #forma_pagamento
 from resources.forma_pagamento.forma_pagamento_resource import forma_pagamento_resource
@@ -22,4 +22,4 @@ def resources(app):
     delete_by_name_forma_pagamento_resource(app)
     delete_by_name_categoria_receita_resource(app)
     add_categoria_receita_resource(app)
-    categorias_receita_resource(app)
+    categoria_receita_resource(app)

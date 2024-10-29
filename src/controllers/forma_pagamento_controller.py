@@ -1,5 +1,5 @@
 from models.repository.forma_pagamento_repository import FormaPagamentoRepository
-from models.entities.formas_pagamento import FormasPagamento
+from models.entities.forma_pagamento import formaPagamento
 
 class FormaPagamentoController:
     def get_all(self) -> dict:
@@ -30,7 +30,7 @@ class FormaPagamentoController:
         def __create_forma_pagamento(forma_pagamento: dict) -> None:
             name = forma_pagamento['name']
 
-            new_forma_pagamento = FormasPagamento(
+            new_forma_pagamento = formaPagamento(
                 name = name
             )
 

@@ -17,6 +17,12 @@ Base = declarative_base()
 
 session = session_make()
 
+session.execute(text("DROP TABLE IF EXISTS forma_pagamento CASCADE"))
+session.execute(text("DROP TABLE IF EXISTS categoria_despesa CASCADE"))
+session.execute(text("DROP TABLE IF EXISTS categoria_receita CASCADE"))
+session.execute(text("DROP TABLE IF EXISTS despesa CASCADE"))
+session.execute(text("DROP TABLE IF EXISTS receita CASCADE"))
+
 session.execute(text("DROP TABLE IF EXISTS formas_pagamento CASCADE"))
 session.execute(text("DROP TABLE IF EXISTS categorias_despesas CASCADE"))
 session.execute(text("DROP TABLE IF EXISTS categorias_receitas CASCADE"))
@@ -25,49 +31,49 @@ session.execute(text("DROP TABLE IF EXISTS receitas CASCADE"))
 
 
 session.execute(text('''
-    CREATE TABLE IF NOT EXISTS formas_pagamento (
+    CREATE TABLE IF NOT EXISTS forma_pagamento (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) UNIQUE NOT NULL
     )
 '''))
 
 session.execute(text('''
-    CREATE TABLE IF NOT EXISTS categorias_despesas (
+    CREATE TABLE IF NOT EXISTS categoria_despesa (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) UNIQUE NOT NULL
     )
 '''))
 
 session.execute(text('''
-    CREATE TABLE IF NOT EXISTS categorias_receitas (
+    CREATE TABLE IF NOT EXISTS categoria_receita (
         id SERIAL PRIMARY KEY,
         name VARCHAR(100) UNIQUE NOT NULL
     )
 '''))
 
 session.execute(text('''
-    CREATE TABLE IF NOT EXISTS despesas (
+    CREATE TABLE IF NOT EXISTS despesa (
         id SERIAL PRIMARY KEY,
         categoria VARCHAR(100) NOT NULL,
         name VARCHAR(100) NOT NULL,
-        data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         forma_pagamento VARCHAR(100) NOT NULL,
         valor FLOAT NOT NULL,
-        FOREIGN KEY (forma_pagamento) REFERENCES formas_pagamento (name),
-        FOREIGN KEY (categoria) REFERENCES categorias_despesas (name)
+        FOREIGN KEY (forma_pagamento) REFERENCES forma_pagamento (name),
+        FOREIGN KEY (categoria) REFERENCES categoria_despesa (name)
     )
 '''))
 
 session.execute(text('''
-    CREATE TABLE IF NOT EXISTS receitas (
+    CREATE TABLE IF NOT EXISTS receita (
         id SERIAL PRIMARY KEY,
         categoria VARCHAR(100) NOT NULL,
         name VARCHAR(100) NOT NULL,
-        data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         forma_pagamento VARCHAR(100) NOT NULL,
         valor FLOAT NOT NULL,
-        FOREIGN KEY (forma_pagamento) REFERENCES formas_pagamento (name),
-        FOREIGN KEY (categoria) REFERENCES categorias_receitas (name)
+        FOREIGN KEY (forma_pagamento) REFERENCES forma_pagamento (name),
+        FOREIGN KEY (categoria) REFERENCES categoria_receita (name)
     )
 '''))
 
