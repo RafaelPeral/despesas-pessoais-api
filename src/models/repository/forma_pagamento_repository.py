@@ -4,11 +4,17 @@ from models.entities.forma_pagamento import FormaPagamento
 class FormaPagamentoRepository:
     def get_all(self):
         with DBConnectionHendler() as db:
+            def __sum(receita):
+                return sum([receita.valor for receita in receita])
+            
             data = db.session.query(FormaPagamento).all()
+
             return [
             {
                 'id': forma_pagamento.id,
                 'name': forma_pagamento.name,
+                'receita': __sum(forma_pagamento.receitas),
+                'despesa': __sum(forma_pagamento.despesas)
             }
             for forma_pagamento in data
             ]

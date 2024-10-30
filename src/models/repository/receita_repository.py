@@ -10,7 +10,7 @@ class ReceitaRepository:
                 'categoria': receita.categoria,
                 'name': receita.name,
                 'date': receita.date,
-                'forma_pagamento': receita.forma_pagamento,
+                'forma_pagamento_id': receita.forma_pagamento_id,
                 'valor': receita.valor
             }for receita in data]
 

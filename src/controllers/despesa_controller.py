@@ -30,7 +30,7 @@ class DespesaController:
                 "categoria": despesa['categoria'],
                 "name": despesa['name'],
                 "date": despesa['date'],
-                "forma_pagamento": despesa['forma_pagamento'],
+                "forma_pagamento_id": despesa['forma_pagamento_id'],
                 "valor": despesa['valor']
             }
         
@@ -41,8 +41,8 @@ class DespesaController:
                 raise Exception('O campo name é obrigatório')
             if not 'date' in despesa or not despesa['date']:
                 raise Exception('O campo date é obrigatório')
-            if not 'forma_pagamento' in despesa or not despesa['forma_pagamento']:
-                raise Exception('O campo forma_pagamento é obrigatório')
+            if not 'forma_pagamento_id' in despesa or not despesa['forma_pagamento_id']:
+                raise Exception('O campo forma_pagamento_id é obrigatório')
             if not 'valor' in despesa or not despesa['valor']:
                 raise Exception('O campo valor é obrigatório')
         
@@ -50,14 +50,14 @@ class DespesaController:
             categoria = despesa['categoria']
             name = despesa['name']
             date = despesa['date']
-            forma_pagamento = despesa['forma_pagamento']
+            forma_pagamento_id = despesa['forma_pagamento_id']
             valor = despesa['valor']
 
             new_despesa = Despesa(
                 categoria = categoria,
                 name = name,
                 date = date,
-                forma_pagamento = forma_pagamento,
+                forma_pagamento_id = forma_pagamento_id,
                 valor = valor
             )
             

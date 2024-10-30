@@ -47,27 +47,23 @@ session.execute(text('''
 session.execute(text('''
     CREATE TABLE IF NOT EXISTS despesa (
         id SERIAL PRIMARY KEY,
-        categoria VARCHAR(100) NOT NULL,
+        categoria VARCHAR(100) NOT NULL REFERENCES categoria_receita(name),
         name VARCHAR(100) NOT NULL,
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        forma_pagamento VARCHAR(100) NOT NULL,
-        valor FLOAT NOT NULL,
-        FOREIGN KEY (forma_pagamento) REFERENCES forma_pagamento (name),
-        FOREIGN KEY (categoria) REFERENCES categoria_despesa (name)
+        forma_pagamento_id INTEGER NOT NULL REFERENCES forma_pagamento(id),
+        valor FLOAT NOT NULL
     )
 '''))
 
 session.execute(text('''
-    CREATE TABLE IF NOT EXISTS receita (
+    CREATE TABLE receita (
         id SERIAL PRIMARY KEY,
-        categoria VARCHAR(100) NOT NULL,
+        categoria VARCHAR(100) NOT NULL REFERENCES categoria_receita(name),
         name VARCHAR(100) NOT NULL,
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        forma_pagamento VARCHAR(100) NOT NULL,
-        valor FLOAT NOT NULL,
-        FOREIGN KEY (forma_pagamento) REFERENCES forma_pagamento (name),
-        FOREIGN KEY (categoria) REFERENCES categoria_receita (name)
-    )
+        forma_pagamento_id INTEGER NOT NULL REFERENCES forma_pagamento(id),
+        valor FLOAT NOT NULL
+    );
 '''))
 
 session.commit()

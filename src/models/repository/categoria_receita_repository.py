@@ -5,10 +5,15 @@ from models.entities.categoria_receita import CategoriaReceita
 class categoriaReceitaRepository:
     def get_all(self):
         with DBConnectionHendler() as db:
+            def sum_receitas(receita):
+                return sum([receita.valor for receita in receita])
+            
             data = db.session.query(CategoriaReceita).all()
+
             return [{
                 'id': categoria_receita.id,
-                'name': categoria_receita.name
+                'name': categoria_receita.name,
+                'receita': sum_receitas(categoria_receita.receitas)
             } for categoria_receita in data]
 
     def insert(self, categoria):

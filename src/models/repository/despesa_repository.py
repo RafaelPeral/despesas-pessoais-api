@@ -10,7 +10,7 @@ class DespesaRepository:
                 'categoria': despesa.categoria,
                 'name': despesa.name,
                 'date': despesa.date,
-                'forma_pagamento': despesa.forma_pagamento,
+                'forma_pagamento_id': despesa.forma_pagamento_id,
                 'valor': despesa.valor
             }for despesa in data]
     
