@@ -14,7 +14,8 @@ class FormaPagamentoRepository:
                 'id': forma_pagamento.id,
                 'name': forma_pagamento.name,
                 'receita': __sum(forma_pagamento.receitas),
-                'despesa': __sum(forma_pagamento.despesas)
+                'despesa': __sum(forma_pagamento.despesas),
+                'total': __sum(forma_pagamento.receitas) - __sum(forma_pagamento.despesas)
             }
             for forma_pagamento in data
             ]
