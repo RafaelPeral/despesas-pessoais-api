@@ -47,10 +47,10 @@ session.execute(text('''
 session.execute(text('''
     CREATE TABLE IF NOT EXISTS despesa (
         id SERIAL PRIMARY KEY,
-        categoria VARCHAR(100) NOT NULL REFERENCES categoria_receita(name),
+        categoria VARCHAR(100) NOT NULL REFERENCES categoria_despesa(name),
         name VARCHAR(100) NOT NULL,
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        forma_pagamento_id INTEGER NOT NULL REFERENCES forma_pagamento(id),
+        forma_pagamento_name VARCHAR(100) NOT NULL REFERENCES forma_pagamento(name),
         valor FLOAT NOT NULL
     )
 '''))
@@ -61,7 +61,7 @@ session.execute(text('''
         categoria VARCHAR(100) NOT NULL REFERENCES categoria_receita(name),
         name VARCHAR(100) NOT NULL,
         date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        forma_pagamento_id INTEGER NOT NULL REFERENCES forma_pagamento(id),
+        forma_pagamento_name VARCHAR(100) NOT NULL REFERENCES forma_pagamento(name),
         valor FLOAT NOT NULL
     );
 '''))

@@ -10,7 +10,7 @@ class Despesa(Base):
     categoria = Column(String(100), ForeignKey("categoria_despesa.name"), nullable=False)
     name = Column(String(100), nullable=False)
     date = Column(DateTime, default=datetime.utcnow,nullable=False)
-    forma_pagamento_id = Column(String(100), ForeignKey("forma_pagamento.id"), nullable=False)
+    forma_pagamento_name = Column(String(100), ForeignKey("forma_pagamento.name"), nullable=False)
     valor = Column(Float, nullable=False)
 
     categoria_despesa = relationship("CategoriaDespesa", back_populates="despesas")

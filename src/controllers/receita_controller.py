@@ -30,7 +30,7 @@ class ReceitaController:
                 "categoria": receita['categoria'],
                 "name": receita['name'],
                 "date": receita['date'],
-                "forma_pagamento_id": receita['forma_pagamento_id'],
+                "forma_pagamento_name": receita['forma_pagamento_name'],
                 "valor": receita['valor']
             }
         
@@ -41,8 +41,8 @@ class ReceitaController:
                 raise Exception('O campo name é obrigatório')
             if not 'date' in receita or not receita['date']:
                 raise Exception('O campo date é obrigatório')
-            if not 'forma_pagamento_id' in receita or not receita['forma_pagamento_id']:
-                raise Exception('O campo forma_pagamento_id é obrigatório')
+            if not 'forma_pagamento_name' in receita or not receita['forma_pagamento_name']:
+                raise Exception('O campo forma_pagamento_name é obrigatório')
             if not 'valor' in receita or not receita['valor']:
                 raise Exception('O campo valor é obrigatório')
         
@@ -50,14 +50,14 @@ class ReceitaController:
             categoria = receita['categoria']
             name = receita['name']
             date = receita['date']
-            forma_pagamento_id = receita['forma_pagamento_id']
+            forma_pagamento_name = receita['forma_pagamento_name']
             valor = receita['valor']
 
             new_receita = Receita(
                 categoria = categoria,
                 name = name,
                 date = date,
-                forma_pagamento_id = forma_pagamento_id,
+                forma_pagamento_name = forma_pagamento_name,
                 valor = valor
             )
             
