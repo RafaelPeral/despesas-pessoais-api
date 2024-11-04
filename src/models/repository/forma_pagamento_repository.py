@@ -1,5 +1,5 @@
-from models.configs.connection import DBConnectionHendler
-from models.entities.forma_pagamento import FormaPagamento
+from src.models.configs.connection import DBConnectionHendler
+from src.models.entities.forma_pagamento import FormaPagamento
 
 class FormaPagamentoRepository:
     def get_all(self):

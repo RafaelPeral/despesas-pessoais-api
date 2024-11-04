@@ -1,5 +1,5 @@
 from flask import request
-from controllers.despesa_controller import DespesaController
+from src.controllers.despesa_controller import DespesaController
 
 def delete_by_name_despesa_resource(app):
     @app.delete("/delete_by_name_despesa")

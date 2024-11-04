@@ -1,5 +1,5 @@
 from flask import request
-from controllers.forma_pagamento_controller import FormaPagamentoController
+from src.controllers.forma_pagamento_controller import FormaPagamentoController
 
 def add_forma_pagamento_resource(app):
     @app.post("/add_forma_pagamento")

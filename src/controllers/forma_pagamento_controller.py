@@ -1,5 +1,5 @@
-from models.repository.forma_pagamento_repository import FormaPagamentoRepository
-from models.entities.forma_pagamento import FormaPagamento
+from src.models.repository.forma_pagamento_repository import FormaPagamentoRepository
+from src.models.entities.forma_pagamento import FormaPagamento
 
 class FormaPagamentoController:
     def get_all(self) -> dict:

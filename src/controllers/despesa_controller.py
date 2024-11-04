@@ -1,8 +1,8 @@
-from models.repository.despesa_repository import DespesaRepository
-from models.entities.despesa import Despesa
-from models.entities.forma_pagamento import FormaPagamento
-from models.entities.categoria_despesa import CategoriaDespesa
-from models.configs.connection import DBConnectionHendler
+from src.models.repository.despesa_repository import DespesaRepository
+from src.models.entities.despesa import Despesa
+from src.models.entities.forma_pagamento import FormaPagamento
+from src.models.entities.categoria_despesa import CategoriaDespesa
+from src.models.configs.connection import DBConnectionHendler
 
 class DespesaController:
     def get_all(self):

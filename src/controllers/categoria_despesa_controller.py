@@ -1,5 +1,5 @@
-from models.repository.categoria_despesa_repository import categoriaDespesaRepository
-from models.entities.categoria_despesa import CategoriaDespesa
+from src.models.repository.categoria_despesa_repository import categoriaDespesaRepository
+from src.models.entities.categoria_despesa import CategoriaDespesa
 
 class CategoriaDespesaController:
     def get_all(self):

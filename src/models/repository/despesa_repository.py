@@ -1,5 +1,5 @@
-from models.entities.despesa import Despesa
-from models.configs.connection import DBConnectionHendler
+from src.models.entities.despesa import Despesa
+from src.models.configs.connection import DBConnectionHendler
 
 class DespesaRepository:
     def get_all(self):

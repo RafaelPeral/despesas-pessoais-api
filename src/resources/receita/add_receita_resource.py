@@ -1,5 +1,5 @@
 from flask import request
-from controllers.receita_controller import ReceitaController
+from src.controllers.receita_controller import ReceitaController
 
 def add_receita_resource(app):
     @app.post("/add_receita")

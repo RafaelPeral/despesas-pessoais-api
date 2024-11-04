@@ -1,5 +1,5 @@
-from models.repository.receita_repository import ReceitaRepository
-from models.entities.receita import Receita
+from src.models.repository.receita_repository import ReceitaRepository
+from src.models.entities.receita import Receita
 
 class ReceitaController:
     def get_all(self):

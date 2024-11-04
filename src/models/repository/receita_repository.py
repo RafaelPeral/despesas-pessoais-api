@@ -1,5 +1,5 @@
-from models.entities.receita import Receita
-from models.configs.connection import DBConnectionHendler
+from src.models.entities.receita import Receita
+from src.models.configs.connection import DBConnectionHendler
 
 class ReceitaRepository:
     def get_all(self):

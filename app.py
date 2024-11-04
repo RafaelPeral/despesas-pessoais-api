@@ -1,5 +1,5 @@
 from flask import Flask
-from resources.resources import resources
+from src.resources.resources import resources
 from flask_cors import CORS
 
 app = Flask(__name__)

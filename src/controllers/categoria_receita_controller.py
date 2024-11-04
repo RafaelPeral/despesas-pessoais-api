@@ -1,5 +1,5 @@
-from models.repository.categoria_receita_repository import categoriaReceitaRepository
-from models.entities.categoria_receita import CategoriaReceita
+from src.models.repository.categoria_receita_repository import categoriaReceitaRepository
+from src.models.entities.categoria_receita import CategoriaReceita
 
 class CategoriaReceitaController:
     def get_all(self):

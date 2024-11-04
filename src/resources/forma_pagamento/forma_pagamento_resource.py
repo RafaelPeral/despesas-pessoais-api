@@ -1,4 +1,4 @@
-from controllers.forma_pagamento_controller import FormaPagamentoController
+from src.controllers.forma_pagamento_controller import FormaPagamentoController
 
 def forma_pagamento_resource(app):
     @app.get("/forma_pagamento")

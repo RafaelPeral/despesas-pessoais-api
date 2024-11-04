@@ -1,5 +1,5 @@
-from models.configs.connection import DBConnectionHendler
-from models.entities.categoria_despesa import CategoriaDespesa
+from src.models.configs.connection import DBConnectionHendler
+from src.models.entities.categoria_despesa import CategoriaDespesa
 
 
 class categoriaDespesaRepository:

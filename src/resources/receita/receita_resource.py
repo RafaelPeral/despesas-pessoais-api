@@ -1,4 +1,4 @@
-from controllers.receita_controller import ReceitaController
+from src.controllers.receita_controller import ReceitaController
 
 def receita_resource(app):
     @app.get("/receita")
