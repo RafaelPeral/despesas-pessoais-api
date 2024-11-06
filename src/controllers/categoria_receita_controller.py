@@ -69,3 +69,25 @@ class CategoriaReceitaController:
             return {"success": 200, "data": response}
         except Exception as e:  
             return {"success": 500, "error": str(e)}
+        
+    def delete_by_id(self, categoria: str):
+        def __format_response(categoria: str) -> dict:
+            return {
+                "id": categoria['id']
+            }
+        
+        def __validate_fields(categoria: str) -> None:
+            if not 'id' in categoria or not categoria['id']:
+                raise Exception('O campo id é obrigatório')
+        
+        def __delete_categoria(categoria: str) -> None:
+            self.categoria_receita_repository.delete_by_id(categoria['id'])
+
+        try:
+            self.categoria_receita_repository = categoriaReceitaRepository()
+            __validate_fields(categoria)
+            __delete_categoria(categoria)
+            response = __format_response(categoria=categoria)
+            return {"success": 200, "data": response}
+        except Exception as e:  
+            return {"success": 500, "error": str(e)}

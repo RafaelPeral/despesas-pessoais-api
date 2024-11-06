@@ -23,3 +23,8 @@ class DespesaRepository:
         with DBConnectionHendler() as db:
             db.session.query(Despesa).filter(Despesa.name == name).delete()
             db.session.commit()
+    
+    def delete_by_id(self, id: int) -> None:
+        with DBConnectionHendler() as db:
+            db.session.query(Despesa).filter(Despesa.id == id).delete()
+            db.session.commit()

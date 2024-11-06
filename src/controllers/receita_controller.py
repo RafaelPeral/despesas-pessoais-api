@@ -95,3 +95,27 @@ class ReceitaController:
             return {"success": 200, "data": response}
         except Exception as e:
             return {"success": 500, "error": str(e)}
+        
+    def delete_by_id(self, receita):
+        def __format_response(receita):
+            return {
+                "id": receita['id']
+            }
+        
+        def __validate_fields(receita):
+            if not 'id' in receita or not receita['id']:
+                raise Exception('O campo id é obrigatório')
+        
+        def __delete_receita(receita):
+            id = receita['id']
+
+            self.receita_repository.delete_by_id(id)
+
+        try:
+            self.receita_repository = ReceitaRepository()
+            __validate_fields(receita)
+            __delete_receita(receita)
+            response = __format_response(receita)
+            return {"success": 200, "data": response}
+        except Exception as e:
+            return {"success": 500, "error": str(e)}

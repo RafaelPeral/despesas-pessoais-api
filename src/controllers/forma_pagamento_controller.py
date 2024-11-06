@@ -68,3 +68,25 @@ class FormaPagamentoController:
             return {"success": 200, "data": response}
         except Exception as e:
             return {"success": 500, "error": str(e)}
+        
+    def delete_by_id(self, forma_pagamento: str) -> None:
+        def __format_response(forma_pagamento: str) -> dict:
+            return {
+                "id": forma_pagamento['id']
+            }
+
+        def __validate_fields(forma_pagamento: str) -> None:
+            if not 'id' in forma_pagamento or not forma_pagamento['id']:
+                raise Exception('O campo id é obrigatório')
+        
+        def __delete_forma_pagamento(forma_pagamento: str) -> None:
+            self.forma_pagamento_repository.delete_by_id(forma_pagamento['id'])
+
+        try:
+            self.forma_pagamento_repository = FormaPagamentoRepository()
+            __validate_fields(forma_pagamento)
+            __delete_forma_pagamento(forma_pagamento)
+            response = __format_response(forma_pagamento=forma_pagamento)
+            return {"success": 200, "data": response}
+        except Exception as e:
+            return {"success": 500, "error": str(e)}

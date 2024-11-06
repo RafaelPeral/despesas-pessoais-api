@@ -26,3 +26,7 @@ class categoriaDespesaRepository:
             db.session.query(CategoriaDespesa).filter(CategoriaDespesa.name == name).delete()
             db.session.commit()
     
+    def delete_by_id(self, id: int):
+        with DBConnectionHendler() as db:
+            db.session.query(CategoriaDespesa).filter(CategoriaDespesa.id == id).delete()
+            db.session.commit()

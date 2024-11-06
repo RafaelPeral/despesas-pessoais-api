@@ -25,3 +25,8 @@ class categoriaReceitaRepository:
         with DBConnectionHendler() as db:
             db.session.query(CategoriaReceita).filter(CategoriaReceita.name == name).delete()
             db.session.commit()
+    
+    def delete_by_id(self, id: int):
+        with DBConnectionHendler() as db:
+            db.session.query(CategoriaReceita).filter(CategoriaReceita.id == id).delete()
+            db.session.commit()

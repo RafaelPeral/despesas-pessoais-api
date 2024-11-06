@@ -23,3 +23,8 @@ class ReceitaRepository:
         with DBConnectionHendler() as db:
             db.session.query(Receita).filter(Receita.name == name).delete()
             db.session.commit()
+    
+    def delete_by_id(self, id: int) -> None:
+        with DBConnectionHendler() as db:
+            db.session.query(Receita).filter(Receita.id == id).delete()
+            db.session.commit()

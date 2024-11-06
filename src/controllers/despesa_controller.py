@@ -111,3 +111,25 @@ class DespesaController:
             return {"success": 200, "data": response}
         except Exception as e:
             return {"success": 500, "error": str(e)}
+        
+    def delete_by_id(self, despesa):
+        def __format_response(despesa):
+            return {
+                "id": despesa['id']
+            }
+        
+        def __validate_fields(despesa):
+            if not 'id' in despesa or not despesa['id']:
+                raise Exception('O campo id é obrigatório')
+        
+        def __delete_despesa(despesa):
+            self.despesa_repository.delete_by_id(despesa['id'])
+        
+        try:
+            self.despesa_repository = DespesaRepository()
+            __validate_fields(despesa)
+            __delete_despesa(despesa)
+            response = __format_response(despesa)
+            return {"success": 200, "data": response}
+        except Exception as e:
+            return {"success": 500, "error": str(e)}

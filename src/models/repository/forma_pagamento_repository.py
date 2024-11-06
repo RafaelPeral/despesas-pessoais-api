@@ -29,3 +29,8 @@ class FormaPagamentoRepository:
         with DBConnectionHendler() as db:
             db.session.query(FormaPagamento).filter(FormaPagamento.name == name).delete()
             db.session.commit()
+
+    def delete_by_id(self, id: int) -> None:
+        with DBConnectionHendler() as db:
+            db.session.query(FormaPagamento).filter(FormaPagamento.id == id).delete()
+            db.session.commit()
