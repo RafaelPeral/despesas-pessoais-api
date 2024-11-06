@@ -80,7 +80,7 @@ class CategoriaDespesaController:
                 raise Exception('O campo id é obrigatório')
         
         def __delete_categoria(id):
-            self.categoria_despesa_repository.delete_by_id(id)
+            self.categoria_despesa_repository.delete_by_id(categoria['id'])
 
         try:
             self.categoria_despesa_repository = categoriaDespesaRepository()
